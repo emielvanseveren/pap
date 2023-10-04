@@ -30,10 +30,11 @@ fn main() -> Result<()> {
         }
     };
 
-    let haversine_vals: Vec<f64> = point_pairs
+    let haversine_vals: Vec<_> = point_pairs
         .iter()
         .map(|pp| haversine(pp.x0, pp.y0, pp.x1, pp.y1, None))
         .collect();
+
     let num_pairs_f64 = n as f64;
     let haversine_mean = haversine_vals
         .iter()
