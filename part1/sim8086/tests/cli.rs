@@ -28,3 +28,15 @@ fn listing_0038_single_register_mov() -> Result<(), Box<dyn std::error::Error>> 
     compare("tests/resources/listing_0038_many_register_mov")?;
     Ok(())
 }
+
+#[test]
+fn listing_0039_single_register_mov() -> Result<(), Box<dyn std::error::Error>> {
+    compare("tests/resources/listing_0039_more_movs")?;
+    Ok(())
+}
+
+#[test]
+fn listing_0040_single_register_mov() -> Result<(), Box<dyn std::error::Error>> {
+    compare("tests/resources/listing_0040_challenge_movs")?;
+    Ok(())
+}
