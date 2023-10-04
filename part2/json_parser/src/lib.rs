@@ -17,27 +17,31 @@ mod tests {
     #[test]
     fn parse_empty_string() {
         let json_str = "";
-        match parse_json_str(json_str) {
-            Err(e) => assert_eq!(e, "Unexpected token"),
-            _ => panic!("Expected error when parsing empty string"),
-        }
+        let res = parse_json_str(json_str);
+        assert!(res.is_err(), "Expected an error for empty string");
+        assert_eq!(res.unwrap_err(), "Unexpected token");
     }
 
     #[test]
     fn parse_empty_object() {
         let json_str = "{}";
-        match parse_json_str(json_str) {
-            Ok(JsonValue::Object { kv }) => assert_eq!(kv.len(), 0),
-            _ => panic!("Expected empty object"),
+        let result = parse_json_str(json_str).unwrap();
+        if let JsonValue::Object { kv } = result {
+            assert_eq!(kv.len(), 0, "Expected empty object");
+        } else {
+            panic!("Expected object");
         }
     }
 
     #[test]
     fn parse_empty_array() {
         let json_str = "[]";
-        match parse_json_str(json_str) {
-            Ok(JsonValue::Array { values }) => assert_eq!(values.len(), 0),
-            _ => panic!("Expected empty array"),
+        let result = parse_json_str(json_str).expect("Expected parsing to succeed");
+
+        if let JsonValue::Array { values } = result {
+            assert_eq!(values.len(), 0, "Expected empty array");
+        } else {
+            panic!("Expected array");
         }
     }
 
