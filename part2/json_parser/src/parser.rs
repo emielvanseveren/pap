@@ -11,7 +11,7 @@ pub enum JsonValue<'a> {
 }
 
 // Parser takes an iterator, which in this case is the tokenizer
-pub struct Parser<'a, I>
+pub(crate) struct Parser<'a, I>
 where
     I: Iterator<Item = std::result::Result<JsonToken<'a>, String>>,
 {
@@ -23,7 +23,7 @@ impl<'a, I> Parser<'a, I>
 where
     I: Iterator<Item = std::result::Result<JsonToken<'a>, String>>,
 {
-    pub fn new(tokens: I) -> Self {
+    pub(crate) fn new(tokens: I) -> Self {
         let mut parser = Parser {
             tokens,
             current_token: None,
@@ -33,7 +33,7 @@ where
         parser.advance();
         parser
     }
-    pub fn parse_value(&mut self) -> Result<JsonValue<'a>, String> {
+    pub(crate) fn parse_value(&mut self) -> Result<JsonValue<'a>, String> {
         match self.current_token {
             Some(Ok(JsonToken::BeginObject)) => self.parse_object(),
             Some(Ok(JsonToken::BeginArray)) => self.parse_array(),

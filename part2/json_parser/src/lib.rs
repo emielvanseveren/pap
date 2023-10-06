@@ -1,4 +1,4 @@
-mod parser;
+pub mod parser;
 mod tokenizer;
 
 use crate::parser::{JsonValue, Parser};
