@@ -1,0 +1,15 @@
+[package]
+name = "rdtsc"
+version = "0.1.0"
+edition = "2021"
+
+[[bin]]
+name = "listing_71"
+path = "src/bin/listing_71.rs"
+
+[[bin]]
+name = "listing_72"
+path = "src/bin/listing_72.rs"
+
+[dependencies]
+
