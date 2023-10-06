@@ -51,6 +51,10 @@ pub fn main() -> Result<(), Box<dyn std::error::Error>> {
     let prof_end = read_cpu_timer();
     let prof_total = prof_end - prof_begin;
 
+    // TODO: Listing 75
+    let cpu_freq = rdtsc::estimate_cpu_timer_freq();
+    println!("CPU freq: {} MHz", cpu_freq);
+
     print_time_elapsed("Startup", prof_total, prof_begin, prof_read);
     print_time_elapsed("Read", prof_total, prof_read, prof_misc_setup);
     print_time_elapsed("MiscSetup", prof_total, prof_misc_setup, prof_parse);
