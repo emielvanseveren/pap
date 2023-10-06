@@ -3,6 +3,9 @@
 debug/
 target/
 
+data**.json
+data**.f64
+
 points.json
 
 # Remove Cargo.lock from gitignore if creating an executable, leave it for libraries
