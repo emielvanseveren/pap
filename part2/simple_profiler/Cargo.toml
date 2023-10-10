@@ -1,0 +1,12 @@
+[package]
+name = "simple_profiler"
+version = "0.1.0"
+edition = "2021"
+
+# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+
+[dependencies]
+rdtsc = { path = "../rdtsc/"}
+haversine = { path = "../haversine"}
+json_parser = {path = "../json_parser"}
+lazy_static = "1.4.0"
